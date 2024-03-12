@@ -109,3 +109,10 @@
 .slide-thanks .slick-dots .slick-active button {
   background-color: rgb(255, 170, 0);
 }
+
+/* FOOTER */
+.menu-support-client {
+  @media screen and (max-width: 1024px) {
+    height: 0;
+  }
+}

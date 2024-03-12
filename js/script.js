@@ -11,6 +11,9 @@ const menuHeaderWrapper = document.querySelector('.menu-header-wrapper')
 const textSupportClient = document.querySelector('.text-support-client')
 const menuSupportClient = document.querySelector('.menu-support-client')
 
+const textInfoAbout = document.querySelector('.text-info-about')
+const menuAboutInfo = document.querySelector('.menu-about-info')
+
 const iconMenuMobile = document.querySelector('.icon-menu-mobile')
 const overlayMenuMobile = document.querySelector('.overlay-menu-mobile')
 const menuMobile = document.querySelector('.menu-mobile')
@@ -40,10 +43,26 @@ iconMenuMobile.onclick = () => {
 }
 
 textSupportClient.onclick = () => {
-    if (menuSupportClient.classList.contains('max-lg:h-0')) {
-        menuSupportClient.classList.remove('max-lg:h-0')
+    const supportClientIcon = document.querySelector('.support-client-icon')
+    if (menuSupportClient.offsetHeight === 0) {
+        const listMenu = menuSupportClient.querySelector('ul')
+        menuSupportClient.style.height = `${listMenu.offsetHeight}px`
+        supportClientIcon.style.transform = 'rotate(-180deg)'
     } else {
-        menuSupportClient.classList.add('max-lg:h-0')
+        menuSupportClient.style.height = '0'
+        supportClientIcon.style.transform = 'rotate(0deg)'
+    }
+}
+
+textInfoAbout.onclick = () => {
+    const supportClientIcon = document.querySelector('.icon-about-info')
+    if (menuAboutInfo.offsetHeight === 0) {
+        const listMenu = menuAboutInfo.querySelector('ul')
+        menuAboutInfo.style.height = `${listMenu.offsetHeight}px`
+        supportClientIcon.style.transform = 'rotate(-180deg)'
+    } else {
+        menuAboutInfo.style.height = '0'
+        supportClientIcon.style.transform = 'rotate(0deg)'
     }
 }
 
