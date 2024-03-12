@@ -1,0 +1,156 @@
+@keyframes menuMobileToLeft {
+  from {
+    transform: translateX(30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes menuMobileToRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeBottom {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes scrolling-left1 {
+  0% {
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes gradient-bg-antimation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes phonering {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+}
+
+@keyframes tada {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+  10%,
+  20% {
+    -webkit-transform: scale(0.9) rotate(-5deg);
+    -ms-transform: scale(0.9) rotate(-5deg);
+    transform: scale(0.9) rotate(-5deg);
+  }
+  30%,
+  50%,
+  70% {
+    -webkit-transform: scale(1.2) rotate(5deg);
+    -ms-transform: scale(1.3) rotate(5deg);
+    transform: scale(1.3) rotate(5deg);
+  }
+  40%,
+  60% {
+    -webkit-transform: scale(1.2) rotate(-5deg);
+    -ms-transform: scale(1.3) rotate(-5deg);
+    transform: scale(1.3) rotate(-5deg);
+  }
+  100%,
+  80% {
+    -webkit-transform: scale(1) rotate(0);
+    -ms-transform: scale(1) rotate(0);
+    transform: scale(1) rotate(0);
+  }
+}
+
+.menuMobileToLeft {
+  animation: menuMobileToLeft 0.5s ease-in-out;
+}
+
+.menuMobileToRight {
+  animation: menuMobileToRight 0.5s ease-in-out;
+}
+
+.marqueeStyle {
+  display: inline-block;
+  /* Apply animation to this element */
+  -webkit-animation: scrolling-left1 20s linear infinite;
+  animation: scrolling-left1 20s linear infinite;
+}
+
+.phonering {
+  animation: phonering 1.5s infinite ease-in-out;
+}
+
+.gradient-bg-antimation {
+  animation: 2s linear infinite forwards gradient-bg-antimation;
+}
+
+.tada {
+  animation: tada 1.8s infinite ease-in-out;
+}
+
+.fadeBottom {
+  animation: fadeBottom 0.5s ease;
+}
