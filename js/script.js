@@ -22,24 +22,27 @@ const menuMobile = document.querySelector('.menu-mobile')
 const distanceFromTopToMenuHeaderWrapper = menuHeaderWrapper.getBoundingClientRect().top + menuHeaderWrapper.offsetHeight
 
 overlayMenuMobile.onclick = () => {
-    header.style.left = '0'
-    mainContent.style.left = '0'
-    footer.style.left = '0'
-
     header.style.zIndex = '9'
     mainContent.style.zIndex = '9'
     footer.style.zIndex = '9'
+
+    setTimeout(() => {
+        header.style.transform = 'translateX(0)'
+        mainContent.style.transform = 'translateX(0)'
+        footer.style.transform = 'translateX(0)'
+    }, 100)
 }
 
 iconMenuMobile.onclick = () => {
-    header.style.left = '300px'
-    mainContent.style.left = '300px'
-    footer.style.left = '300px'
+    header.style.transform = 'translateX(300px)'
+    mainContent.style.transform = 'translateX(300px)'
+    footer.style.transform = 'translateX(300px)'
 
-    header.style.zIndex = '-1'
-    mainContent.style.zIndex = '-1'
-    footer.style.zIndex = '-1'
-    menuMobile.classList.remove('hidden')
+    setTimeout(() => {
+        header.style.zIndex = '-1'
+        mainContent.style.zIndex = '-1'
+        footer.style.zIndex = '-1'
+    }, 400)
 }
 
 textSupportClient.onclick = () => {
@@ -235,17 +238,18 @@ const listNextMenuIcon = document.querySelectorAll('.next-menu-icon')
 
 listNextMenuIcon.forEach(item => {
     item.onclick = function () {
+        const menuParent = item.closest('.menu-parent')
         const menuChild = this.parentElement.querySelector('.menu-child')
-        menuChild.classList.remove('invisible')
-        menuChild.classList.add('menuMobileToLeft')
         menuChild.classList.remove('menuMobileToRight')
+        menuChild.classList.add('menuMobileToLeft')
+        menuChild.style.zIndex = '1'
         const iconPrev = menuChild.querySelector('.icon-prev')
         iconPrev.onclick = function () {
+            setTimeout(() => {
+                menuChild.style.zIndex = '-1'
+            }, 700)
             menuChild.classList.remove('menuMobileToLeft')
             menuChild.classList.add('menuMobileToRight')
-            setTimeout(() => {
-                menuChild.classList.add('invisible')
-            }, 300)
         }
     }
 })
