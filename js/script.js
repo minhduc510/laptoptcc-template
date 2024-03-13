@@ -99,6 +99,89 @@ document.addEventListener('scroll', () => {
     }
 })
 
+const listNextMenuIcon = document.querySelectorAll('.next-menu-icon')
+
+listNextMenuIcon.forEach(item => {
+    item.onclick = function () {
+        const menuParent = item.closest('.menu-parent')
+        const menuChild = this.parentElement.querySelector('.menu-child')
+        menuChild.classList.remove('menuMobileToRight')
+        menuChild.classList.add('menuMobileToLeft')
+        menuChild.style.zIndex = '1'
+        const iconPrev = menuChild.querySelector('.icon-prev')
+        iconPrev.onclick = function () {
+            setTimeout(() => {
+                menuChild.style.zIndex = '-1'
+            }, 700)
+            menuChild.classList.remove('menuMobileToLeft')
+            menuChild.classList.add('menuMobileToRight')
+        }
+    }
+})
+
+const listCountDown = document.querySelectorAll('.deal-hot-countdown')
+listCountDown.forEach(item => {
+    countDown(item, '04/14/2024 10:1 AM')
+})
+
+function countDown(element, date) {
+    var end = new Date(date);
+
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+
+            clearInterval(timer);
+            element.innerHTML = 'EXPIRED!';
+
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+
+        element.innerHTML = days + ' Ngày ';
+        element.innerHTML += hours + ' : ';
+        element.innerHTML += minutes + ' : ';
+        element.innerHTML += seconds;
+    }
+
+    timer = setInterval(showRemaining, 1000);
+
+}
+
+// DEAL HOT
+var end = new Date('04/14/2024 10:1 AM');
+
+var _second = 1000;
+var _minute = _second * 60;
+var _hour = _minute * 60;
+var _day = _hour * 24;
+var timer;
+
+function showRemaining() {
+    var now = new Date();
+    var distance = end - now; days = Math.floor(distance / _day);
+    var hours = Math.floor((distance % _day) / _hour);
+    var minutes = Math.floor((distance % _hour) / _minute);
+    var seconds = Math.floor((distance % _minute) / _second);
+
+    document.querySelector('.deal-hot-day').innerHTML = days;
+    document.querySelector('.deal-hot-hour').innerHTML = hours;
+    document.querySelector('.deal-hot-minute').innerHTML = minutes;
+    document.querySelector('.deal-hot-second').innerHTML = seconds;
+}
+
+timer = setInterval(showRemaining, 1000);
+
 $(document).ready(function () {
     // SLIDE BANNER
     $('.wrap-slides-banner-home').slick({
@@ -142,8 +225,6 @@ $(document).ready(function () {
         slidesToScroll: 1,
         nextArrow: document.querySelector('.btn-deal-hot.next'),
         prevArrow: document.querySelector('.btn-deal-hot.prev'),
-        autoplay: true,
-        autoplaySpeed: 2000,
         responsive: [
             {
                 breakpoint: 1024,
@@ -184,13 +265,13 @@ $(document).ready(function () {
     });
 
     // LAPTOP DEMAND SLIDE
-    $('.laptop-demand-slide').slick({
+    $('.demand-laptops-slide').slick({
         dots: false,
         prevArrow: false,
         nextArrow: false,
         slidesToShow: 5,
-        nextArrow: document.querySelector('.btn-laptop-demand.next'),
-        prevArrow: document.querySelector('.btn-laptop-demand.prev'),
+        nextArrow: document.querySelector('.btn-demand-laptops.next'),
+        prevArrow: document.querySelector('.btn-demand-laptops.prev'),
         autoplay: true,
         autoplaySpeed: 2000,
         responsive: [
@@ -233,24 +314,4 @@ $(document).ready(function () {
         ]
     });
 });
-
-const listNextMenuIcon = document.querySelectorAll('.next-menu-icon')
-
-listNextMenuIcon.forEach(item => {
-    item.onclick = function () {
-        const menuParent = item.closest('.menu-parent')
-        const menuChild = this.parentElement.querySelector('.menu-child')
-        menuChild.classList.remove('menuMobileToRight')
-        menuChild.classList.add('menuMobileToLeft')
-        menuChild.style.zIndex = '1'
-        const iconPrev = menuChild.querySelector('.icon-prev')
-        iconPrev.onclick = function () {
-            setTimeout(() => {
-                menuChild.style.zIndex = '-1'
-            }, 700)
-            menuChild.classList.remove('menuMobileToLeft')
-            menuChild.classList.add('menuMobileToRight')
-        }
-    }
-})
 

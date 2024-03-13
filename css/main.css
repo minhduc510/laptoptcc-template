@@ -18,9 +18,9 @@
 
 /* HEADER */
 header .item-group .global-address-list {
-  transition: all 0.5s ease;
+  transition: all 0.1s ease;
   opacity: 0;
-  top: 80px;
+  top: 50px;
 }
 
 header .item-group:hover .global-address-list {
@@ -30,9 +30,9 @@ header .item-group:hover .global-address-list {
 }
 
 header .contact-phone .contact-phone-list {
-  transition: all 0.5s ease;
+  transition: all 0.1s ease;
   opacity: 0;
-  top: 80px;
+  top: 60px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 0.5rem 1rem;
   z-index: 1;
@@ -78,14 +78,11 @@ header .menu-header .menu-list-item > a::after {
 }
 
 header .menu-header .menu-list-item .menu-list-child {
-  transition: all 0.5s ease;
-  opacity: 0;
-  left: 90%;
+  display: none;
 }
 
 header .menu-header .menu-list-item:hover .menu-list-child {
-  visibility: visible !important;
-  opacity: 1;
+  display: block;
   top: 50px;
   left: 100%;
 }
@@ -135,7 +132,7 @@ header .header-bottom .menu-header-wrapper:hover {
 /* DEAL HOT */
 .global-deal-container {
   background: linear-gradient(270deg, #00a551 0%, #8eb958 102.33%);
-  margin: 80px 0 10px;
+  margin: 55px 0 10px;
   padding: 70px 10px 20px;
   @media screen and (max-width: 1024px) {
     margin: 80px 0 10px;
@@ -183,6 +180,7 @@ header .header-bottom .menu-header-wrapper:hover {
   background-repeat: no-repeat;
   background-position: center;
   background-image: url("../images/bg-home-2024.png");
+  background-size: cover;
 }
 
 /* HOME PRODUCT */
