@@ -148,10 +148,10 @@ function countDown(element, date) {
         var minutes = Math.floor((distance % _hour) / _minute);
         var seconds = Math.floor((distance % _minute) / _second);
 
-        element.innerHTML = days + ' Ngày ';
-        element.innerHTML += hours + ' : ';
-        element.innerHTML += minutes + ' : ';
-        element.innerHTML += seconds;
+        element.innerHTML = (days < 10 ? `0${days}` : days) + ' Ngày ';
+        element.innerHTML += (hours < 10 ? `0${hours}` : hours) + ' : ';
+        element.innerHTML += (minutes < 10 ? `0${minutes}` : minutes) + ' : ';
+        element.innerHTML += seconds < 10 ? `0${seconds}` : seconds;
     }
 
     timer = setInterval(showRemaining, 1000);
@@ -174,13 +174,45 @@ function showRemaining() {
     var minutes = Math.floor((distance % _hour) / _minute);
     var seconds = Math.floor((distance % _minute) / _second);
 
-    document.querySelector('.deal-hot-day').innerHTML = days;
-    document.querySelector('.deal-hot-hour').innerHTML = hours;
-    document.querySelector('.deal-hot-minute').innerHTML = minutes;
-    document.querySelector('.deal-hot-second').innerHTML = seconds;
+    document.querySelector('.deal-hot-day').innerHTML = days < 10 ? `0${days}` : days;
+    document.querySelector('.deal-hot-hour').innerHTML = hours < 10 ? `0${hours}` : hours;
+    document.querySelector('.deal-hot-minute').innerHTML = minutes < 10 ? `0${minutes}` : minutes;
+    document.querySelector('.deal-hot-second').innerHTML = seconds < 10 ? `0${seconds}` : seconds;
 }
 
 timer = setInterval(showRemaining, 1000);
+
+const groupContentButtons = document.querySelectorAll('.group-content-btn')
+
+groupContentButtons.forEach(item => {
+    item.onclick = function () {
+        groupContentButtons.forEach(btn => btn.classList.remove('active'))
+        const listDealHotSlide = document.querySelectorAll('.deal-hot-slide')
+        listDealHotSlide.forEach(dealHotSlide => {
+            dealHotSlide.style.display = 'none'
+        })
+        const slideShow = document.querySelector(`.${this.id}`)
+        slideShow.style.display = 'block'
+        this.classList.add('active')
+        $(`.${this.id}.deal-hot-slide`).slick({
+            dots: false,
+            prevArrow: false,
+            nextArrow: false,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            nextArrow: document.querySelector('.btn-deal-hot.next'),
+            prevArrow: document.querySelector('.btn-deal-hot.prev'),
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+            ]
+        });
+    }
+})
 
 $(document).ready(function () {
     // SLIDE BANNER
@@ -217,7 +249,7 @@ $(document).ready(function () {
     });
 
     // DEAL HOT SLIDE
-    $('.deal-hot-slide').slick({
+    $('.happenning.deal-hot-slide').slick({
         dots: false,
         prevArrow: false,
         nextArrow: false,
@@ -249,16 +281,9 @@ $(document).ready(function () {
             {
                 breakpoint: 1024,
                 settings: {
-                    dots: false,
-                    prevArrow: false,
-                    nextArrow: false,
                     speed: 1000,
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    autoplay: true,
-                    autoplaySpeed: 2000,
-                    nextArrow: document.querySelector('.btn-graphics-laptops.next'),
-                    prevArrow: document.querySelector('.btn-graphics-laptops.prev'),
                 }
             },
         ]
@@ -278,16 +303,9 @@ $(document).ready(function () {
             {
                 breakpoint: 1024,
                 settings: {
-                    dots: false,
-                    prevArrow: false,
-                    nextArrow: false,
                     speed: 1000,
                     slidesToShow: 2,
                     slidesToScroll: 2,
-                    autoplay: true,
-                    autoplaySpeed: 2000,
-                    nextArrow: document.querySelector('.btn-laptop-demand.next'),
-                    prevArrow: document.querySelector('.btn-laptop-demand.prev'),
                 }
             },
         ]
